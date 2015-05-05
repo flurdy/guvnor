@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>   
+      <meta charset="utf-8" />
+      <title>Guvnor</title>
+      <meta name="keywords" content="guvnor,governor,guv,ci,cd,continuous,integration,deployment,delivery,tool,cli,minion"/>
+	   <meta name="description" content="Guvnor, in charge of your CI. Whichever CI you have and more"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.6, user-scalable=yes, minimal-ui" />
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+      <link rel="stylesheet" href="css/main.css"/>
+      <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+      <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.2/handlebars.min.js"></script>
+      <script type="text/javascript">
+         
+      </script>
+      <style>
+      </style>
+   </head>
+   <body>
+      <header>
+         <h1>Guvnor</h1>
+         <a href="index.html"><img src="images/guvnor-title.png" /></a>
+         <h3>in charge of your CI, whichever CI you have and more</h3>
+      </header>
+      <nav id="lookout" class="menubar">
+         <ul class="horizontal">
+            <li><a href="project.html">Projects</a></li>
+            <li><a href="environment.html">Environments</a></li>
+            <li><a href="task.html">Tasks</a></li>
+            <li><a href="flow.html">Flow</a></li>
+            <li><a href="admin.html">Admin</a></li>
+         </ul>
+      </nav>
+      
+      <div id="content" class="content">
+         
+         <div class="well">
+            
+            <img title="Task" class="dimension" src="images/task.png"/>
+         
+            <h3>Task</h3>
+         
+            <div class="well">
+               <div class="job-section">
+                  Build
+               </div>
+               <div class="row">
+                  <div class="col-lg-6">
+                     <div class="input-group">
+                        <select size="1" class="form-control">
+                           <optgroup label="branch">
+                              <option selected>master</option>
+                              <option>v1.2.x</option>
+                           </optgroup>
+                           <optgroup label="tag">
+                              <option>v1.2</option>
+                              <option>v1.1</option>
+                           </optgroup>
+                           <optgroup label="feature">
+                              <option>feature-abc</option>
+                              <option>feature-blah</option>
+                           </optgroup>
+                           <optgroup label="bugfix">
+                              <option>FIX-123</option>
+                           </optgroup>
+                        </select>
+                        <span class="input-group-btn">
+                           <button class="btn btn-primary">build</button>
+                        </span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         
+            <div class="well">
+               <div class="job-section">
+                  Release
+               </div>
+               <div class="row">
+                  <div class="col-lg-6">
+                     <div class="input-group">
+                        <select size="1" class="form-control">
+                           <optgroup label="branch">
+                              <option selected>master: v1.3-SNAPSHOT</option>
+                              <option>v1.2.x: v1.2.1-SNAPSHOT</option>
+                           </optgroup>
+                           <optgroup label="bugfix">
+                              <option>FIX-123: v1.1.8-SNAPSHOT</option>
+                           </optgroup>
+                        </select>
+                        <span class="input-group-btn">
+                           <button class="btn btn-success">release</button>
+                        </span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         
+            <div class="well">
+               <div class="job-section">
+                  Deploy
+               </div>
+               <div class="row">
+                  <div class="col-lg-6">
+                     <div class="input-group">
+                        <select size="1" class="form-control">
+                           <optgroup label="snapshot">
+                              <option selected>v1.3-SNAPSHOT</option>
+                              <option>v1.2.1-SNAPSHOT</option>
+                           </optgroup>
+                           <optgroup label="release">
+                              <option>v1.2</option>
+                              <option>v1.1</option>
+                           </optgroup>
+                        </select>
+                     <select size="1" class="form-control">
+                        <optgroup label="staging">
+                           <option selected>integration 1</option>
+                           <option>integration 2</option>
+                        </optgroup>
+                        <!--
+                        <optgroup label="production">
+                           <option disabled>staging 1</option>
+                           <option disabled>staging 2</option>
+                           <option disabled>preprod</option>
+                           <option disabled>prod-test</option>
+                           <option disabled>production</option>
+                        </optgroup>
+                        -->
+                        <optgroup label="project servers">
+                           <option>project1</option>
+                           <option>project2</option>
+                           <option>project3</option>
+                           <option>project4</option>
+                        </optgroup>
+                        <optgroup label="demo servers">
+                           <option>demo1</option>
+                           <option>demo2</option>
+                           <option>demo3</option>
+                        </optgroup>
+                     </select>
+                     <span class="input-group-btn">
+                        <a href="environment.html" class="btn btn-primary">deploy</a>
+                     </span>
+                  </div>
+               </div>
+            </div>
+         
+         </div>
+         
+         <div class="well">
+            <div class="job-section">
+               Promote
+            </div>
+            <div class="row">
+               <div class="col-lg-6">
+                  <div class="input-group">
+                     <select size="1" class="form-control">
+                           <option selected>integration 1 -> staging</option>
+                           <option>integration 2 -> staging</option>
+                           <option>staging -> preprod</option>
+                           <option>preprod -> production</option>
+                           <option>production -&gt; prodtest</option>
+                        </optgroup>
+                     </select>
+                     <span class="input-group-btn">
+                        <a href="environment.html" class="btn btn-success">promote</a>
+                     </span>
+                  </div>
+               </div>
+            </div>
+         
+         </div>
+         
+         <div class="well">
+            <div class="job-section">
+               Integration test
+            </div>
+            <div class="row">
+               <div class="col-lg-6">
+                  <div class="input-group">
+                        <select size="1" class="form-control">
+                           <optgroup label="snapshot">
+                              <option selected>v1.3-SNAPSHOT</option>
+                              <option>v1.2.1-SNAPSHOT</option>
+                           </optgroup>
+                           <optgroup label="release">
+                              <option>v1.2</option>
+                              <option>v1.1</option>
+                           </optgroup>
+                        </select>
+                     <span class="input-group-btn">
+                        <a href="environment.html" class="btn btn-default">test</a>
+                     </span>
+                  </div>
+               </div>
+            </div>
+         
+         </div>
+         <div class="well">
+            <div class="job-section">
+               Smoke test
+            </div>
+            <div class="row">
+               <div class="col-lg-6">
+                  <div class="input-group">
+                     <select size="1" class="form-control">
+                        <optgroup label="staging">
+                           <option selected>integration 1</option>
+                           <option>integration 2</option>
+                           <option>staging</option>
+                        </optgroup>
+                        <optgroup label="production">
+                           <option>preprod</option>
+                           <option>prod-test</option>
+                           <option disabled>production</option>
+                        </optgroup>
+                        <optgroup label="project servers">
+                           <option>project1</option>
+                           <option>project2</option>
+                           <option>project3</option>
+                           <option>project4</option>
+                        </optgroup>
+                        <optgroup label="demo servers">
+                           <option>demo1</option>
+                           <option>demo2</option>
+                           <option>demo3</option>
+                        </optgroup>
+                     </select>
+                     <span class="input-group-btn">
+                        <a href="environment.html" class="btn btn-default">test</a>
+                     </span>
+                  </div>
+               </div>
+            </div>
+         
+         </div>
+         
+         <div class="well">
+            <div class="job-section">
+               Restart application
+            </div>
+            <div class="row">
+               <div class="col-lg-6">
+                  <div class="input-group">
+                     <select size="1" class="form-control">
+                        <optgroup label="staging">
+                           <option selected>integration 1</option>
+                           <option>integration 2</option>
+                           <option>staging</option>
+                        </optgroup>
+                        <optgroup label="production">
+                           <option>preprod</option>
+                           <option>prod-test</option>
+                           <option disabled>production</option>
+                        </optgroup>
+                        <optgroup label="project servers">
+                           <option>project1</option>
+                           <option>project2</option>
+                           <option>project3</option>
+                           <option>project4</option>
+                        </optgroup>
+                        <optgroup label="demo servers">
+                           <option>demo1</option>
+                           <option>demo2</option>
+                           <option>demo3</option>
+                        </optgroup>
+                     </select>
+                     <span class="input-group-btn">
+                        <a href="environment.html" class="btn btn-warning">restart</a>
+                     </span>
+                  </div>
+               </div>
+            </div>
+         
+         </div>
+         
+         <div class="well">
+            <div class="job-section">
+               Reboot nodes
+            </div>
+            <div class="row">
+               <div class="col-lg-6">
+                  <div class="input-group">
+                     <select size="1" class="form-control">
+                        <optgroup label="staging">
+                           <option selected>integration 1</option>
+                           <option>integration 2</option>
+                           <option>staging</option>
+                        </optgroup>
+                        <optgroup label="production">
+                           <option>preprod</option>
+                           <option>prod-test</option>
+                           <option disabled>production</option>
+                        </optgroup>
+                        <optgroup label="project servers">
+                           <option>project1</option>
+                           <option>project2</option>
+                           <option>project3</option>
+                           <option>project4</option>
+                        </optgroup>
+                        <optgroup label="demo servers">
+                           <option>demo1</option>
+                           <option>demo2</option>
+                           <option>demo3</option>
+                        </optgroup>
+                     </select>
+                     <span class="input-group-btn">
+                        <a href="environment.html" class="btn btn-warning">reboot</a>
+                     </span>
+                  </div>
+               </div>
+            </div>
+         
+         </div>
+         
+      </div>
+      <footer>
+         <ul class="horizontal">
+            <li><a href="https://github.com/flurdy/guvnor">Project</a></li>
+            <li><a href="https://github.com/flurdy/guvnor">About</a></li>
+            <li><a href="https://github.com/flurdy/guvnor">Contact</a></li>
+            <li><a href="https://github.com/flurdy/guvnor">Support</a></li>
+         </ul>
+      </footer>
+   </body>
+</html>
+   
