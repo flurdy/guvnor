@@ -1,15 +1,15 @@
 # guvnor
 
-Guvnor, in charge of your CI. Whichever CI you have and more
+Guvnor, in charge of your CI, repositories, servers, and more
 
 
-* Command line tools 
+* Command line tools
 * - to keep an eye on your minions
 * - to order your CI minions about in easy steps
-* Web interface 
+* Web interface
 * - to keep an eye on your minions
 * - to order your CI minions about in easy steps
-* Minions that talk to CI APIs
+* Minions that talk to CI, repository APIs
 
 
 ## Matrix
@@ -19,7 +19,7 @@ Guvnor, in charge of your CI. Whichever CI you have and more
 * With all in a clean and clear interface
 
 
-## Example CLI 
+## Example CLI
 
 ### Deploy build
 

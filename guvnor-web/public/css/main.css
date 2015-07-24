@@ -1,16 +1,17 @@
 
-body{ padding: 0.5em 1.5em; font-family: Arial, Sans; max-width: 60em; background-color: #ffffff; color: black; }
+body{ padding: 0.5em 1.5em; font-family: Arial, Sans; 
+      max-width: 60em; background-color: #cdd5d5; color: black; }
 header h1, header h3 { display: none; }
-header imgo { display: none; }
+imgo { display: none; }
 #lookout { padding: 0.3em 0 1em 0; }
 #lookout ul { padding: 0 0.2em; }
 #lookout li { font-size: 1.1em; }
 #starboard { float: right;  }
-footer { text-align: center; clear: both; max-width: 40em; }
+header, footer, #lookout { text-align: center; clear: both; max-width: 40em; }
 footer li { font-size: 0.8em; }
 .horizontal li { list-style: none; display: inline; padding: 0 0.5em; }
-#content { min-height: 20em; }
-.navigation-matrix { padding: 2em;}
+#content { min-height: 16em; }
+.navigation-matrix { padding: 4em 2em;}
 .navigation-option { float: left; width: 12em;}
 .navigation-option { text-align: center; }
 .navigation-option img { width: 9em; }
@@ -20,16 +21,7 @@ footer li { font-size: 0.8em; }
    clear: left; font-weight: bold; 
    width: 10em; text-align: left;
 }
-.job-buttons {
-   text-align: right;
-}
-.job-buttons button {
-   margin: 0.2em 0.1em;
-   /*float: right;*/
-}
-.dimension {
-   width: 6em;
-   float: right;
-   clear: right;
-}
+.job-buttons { text-align: right; }
+.job-buttons button { margin: 0.2em 0.1em; }
+.dimension { width: 6em; float: right; clear: right; }
 
