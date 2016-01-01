@@ -1,0 +1,21 @@
+extend ../layout
+block content
+
+   #breadcrumb project/#{project.title}/build
+
+   h4 build project #{project.title}
+
+   form.form-horizontal(method="post",action="/project/#{project.title}/build")
+
+      .form-group
+         label.col-sm-2.control-label(for="version") branch
+         .col-sm-4
+            select.form-control(multiple,name="branch")
+               option(selected) master
+               option(disabled) ----
+               option v9.0.x
+               option feature-fantastic
+
+      .form-group
+         .col-sm-8
+            button.col-sm-4.btn.btn-success.pull-right(type="submit") build

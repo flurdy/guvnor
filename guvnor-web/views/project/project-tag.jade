@@ -1,0 +1,53 @@
+extend ../layout
+block content
+
+   #breadcrumb project/#{project.title}/build
+
+   h4 tag project #{project.title}
+
+   form.form-horizontal(method="post",action="/project/#{project.title}/tag")
+
+      .form-group
+         label.col-sm-2.control-label(for="branch") branch
+         .col-sm-4
+            select.form-control(multiple,name="branch")
+               option(selected) master
+               option(disabled) ----
+               option v9.0.x
+               option v8.6.x
+
+      .form-group
+         label.col-sm-2.control-label(for="quantifier") version quantifier
+         .col-sm-8
+            label.radio-inline.col-sm-2
+               input(type="radio",name="quantifier",id="quantifier-major",value="major")
+               | major
+            label.radio-inline.col-sm-2
+               input(type="radio",name="quantifier",id="quantifier-minor",value="minor",checked)
+               | minor
+            label.radio-inline.col-sm-2
+               input(type="radio",name="quantifier",id="quantifier-patch",value="patch")
+               | patch
+            label.radio-inline.col-sm-2
+               input(type="radio",name="quantifier",id="quantifier-phase",value="phase")
+               | phase
+
+      .form-group
+         label.col-sm-2.control-label(for="phase") phase
+         .col-sm-8
+            label.radio-inline.col-sm-2
+               input(type="radio",name="phase",id="phase-release",value="release",checked)
+               | release
+            label.radio-inline.col-sm-2
+               input(type="radio",name="phase",id="phase-rc",value="rc")
+               | RC
+            label.radio-inline.col-sm-2
+               input(type="radio",name="phase",id="hase-beta",value="beta")
+               | &beta;eta
+            label.radio-inline.col-sm-2
+               input(type="radio",name="phase",id="phase-alpha",value="alpha")
+               | &alpha;lpha
+
+      .form-group
+         .col-sm-8
+            button.btn.btn-success.col-sm-4.pull-right(type="submit") tag

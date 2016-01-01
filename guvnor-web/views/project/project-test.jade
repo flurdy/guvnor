@@ -1,0 +1,65 @@
+extend ../layout
+block content
+
+   #breadcrumb project/#{project.title}/test
+
+   h4 test project #{project.title}
+
+   form.form-horizontal(method="post",action="/project/#{project.title}/test")
+
+      .form-group
+         label.col-sm-2.control-label(for="test-types") type of test
+         #test-types.col-sm-6
+            .radio
+               label
+                  input(type="radio",name="testtype",id="type-unit",value="unit")
+                  | unit
+            .radio
+               label
+                  input(type="radio",name="testtype",id="type-integration",value="integration",checked)
+                  | integration
+            .radio
+               label
+                  input(type="radio",name="testtype",id="type-functional",value="functional")
+                  | functional
+            .radio
+               label
+                  input(type="radio",name="testtype",id="type-smoke",value="smoke")
+                  | smoke
+            .radio
+               label
+                  input(type="radio",name="testtype",id="type-performance",value="performance")
+                  | performance
+
+      .form-group
+         label.col-sm-2.control-label(for="branch") branch or tag
+         .col-sm-4
+            select.form-control(multiple,name="branch")
+               option(selected) master
+               option(disabled) ----
+               option v9.0.1
+               option feature-fantastic
+
+      .form-group
+         label.col-sm-2.control-label(for="environment") environment
+         .col-sm-4
+            select.form-control(multiple,name="environment")#environment
+               option(selected) build
+               option(disabled) ----
+               option integration
+               option(disabled) ----
+               option dev-01
+               option dev-02
+               option dev-03
+               option(disabled) ----
+               option staging
+               option demo-01
+               option demo-02
+               option demo-03
+               option pre-prod
+               option production
+               option prod-test
+
+      .form-group
+         .col-sm-8
+            button.col-sm-4.btn.btn-success.pull-right(type="submit") test

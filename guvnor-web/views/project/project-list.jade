@@ -1,0 +1,12 @@
+extend ../layout
+block content
+
+   #breadcrumb project
+
+   img.righter(src="/images/project.png")
+   h4 project
+
+   ul#project-list
+     each project in projects
+        li
+            a(href="/project/#{project}") #{project}

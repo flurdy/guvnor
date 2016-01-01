@@ -1,0 +1,26 @@
+extend ../layout
+block content
+
+   #breadcrumb project/#{project.title}/build
+
+   h4 promote project #{project.title}
+
+   form.form-horizontal(method="post",action="/project/#{project.title}/tag")
+
+      .form-group
+         label.col-sm-2.control-label(for="environment") environment
+         .col-sm-4
+            select.form-control(multiple,name="environment",size="9")#environment
+               option integration : v9.0.1
+               option(disabled) ----> staging
+               option(disabled) ----> demo-01
+               option(disabled) ----> demo-02
+               option staging : v.9.0.0
+               option(disabled) ----> pre-prod
+               option pre-prod  : v.8.6.3
+               option(disabled) ----> production
+               option(disabled) ----> prod-test
+
+      .form-group
+         .col-sm-8
+            button.btn.btn-success.col-sm-4.pull-right(type="submit") promote

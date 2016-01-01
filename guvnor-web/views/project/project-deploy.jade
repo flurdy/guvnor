@@ -1,0 +1,45 @@
+extend ../layout
+block content
+
+   #breadcrumb project/#{project.title}/deploy
+
+   h4 deploy project  #{project.title}
+
+   form.form-horizontal(method="post",action="/project/#{project.title}/deploy")
+
+      .form-group
+         label.col-sm-2.control-label(for="version") version
+         .col-sm-4
+            select.form-control(multiple,name="version")#version
+               option(selected) v10.0.0 snapshot
+               option(disabled) ----
+               option v9.0.1 snapshot
+               option v9.1.0 snapshot
+               option(disabled) ----
+               option v9.0.0
+               option v8.4.2
+               option v8.4.1
+               option v8.4.0
+               option v8.3.0
+
+      .form-group
+         label.col-sm-2.control-label(for="environment") environment
+         .col-sm-4
+            select.form-control(multiple,name="environment")#environment
+               option(selected) integration
+               option(disabled) ----
+               option dev-01
+               option dev-02
+               option dev-03
+               option(disabled) ----
+               option staging
+               option demo-01
+               option demo-02
+               option demo-03
+               option pre-prod
+               option production
+               option prod-test
+
+      .form-group
+         .col-sm-8
+            button.col-sm-4.btn.btn-success.pull-right(type="submit") deploy

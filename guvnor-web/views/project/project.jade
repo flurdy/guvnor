@@ -1,0 +1,35 @@
+extend ../layout
+block content
+
+
+   #breadcrumb project/#{project.title}
+
+   img.righter(src="/images/project.png")
+   h4 project #{project.title}
+
+   ul
+      li
+         a(href="/project/#{project.title}/build") build
+      // (master/branch)
+
+      li
+         a(href="/project/#{project.title}/test") test
+      // (unit,integration,functional,smoke,performance)
+
+      li
+         a(href="/project/#{project.title}/deploy") deploy
+      // to development or integration
+
+      li
+         a(href="/project/#{project.title}/tag") tag
+
+      li
+         a(href="/project/#{project.title}/promote") promote
+      // integration to staging to prod test to prod
+
+      li
+         a(href="/project/#{project.title}/versions") find versions
+
+
+
+
