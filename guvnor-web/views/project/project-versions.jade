@@ -1,0 +1,13 @@
+extend ../layout
+block content
+
+   #breadcrumb project/#{project.title}/versions
+
+   h4 project #{project.title} environment versions
+
+   .well
+      table.table.table-striped
+        each environment in environments
+           tr
+               td.pull-right #{environment.name}
+               td #{environment.version}

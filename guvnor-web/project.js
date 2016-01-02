@@ -54,9 +54,31 @@ router.get('/:project/tag', function(req, res) {
    res.render('project/project-tag',{ "project": req.project});
 });
 
+router.post('/:project/promote', urlencodedParser, function(req, res) {
+   console.log("promoting " + req.project.title +
+      " from " + req.body.environment)
+   res.redirect('/project/' + req.project.title);
+});
+
 router.get('/:project/promote', function(req, res) {
    res.render('project/project-promote',{ "project": req.project});
 });
+
+router.get('/:project/versions', function(req, res) {
+   res.render('project/project-versions',{ "project": req.project, "environments": [
+      { "name": "dev-01", "version": "v9.1.0-SNAPSHOT"},
+      { "name": "dev-02", "version": "v9.0.1"},
+      { "name": "dev-03", "version": "v9.0.2-SNAPSHOT"},
+      { "name": "integration", "version": "v9.0.1"},
+      { "name": "staging", "version": "v9.0.0"},
+      { "name": "demo-01", "version": "v9.0.0"},
+      { "name": "demo-02", "version": "v8.6.3"},
+      { "name": "pre-prod", "version": "v8.6.3"},
+      { "name": "production", "version": "v8.6.3"},
+      { "name": "prod-test", "version": "v8.6.3"},
+      ]});
+});
+
 
 router.get('/:project', function(req, res) {
    res.render('project/project',{ "project": req.project});
