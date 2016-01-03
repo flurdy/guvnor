@@ -5,40 +5,31 @@ block content
 
    h4 deploy project  #{project.title}
 
-   form.form-horizontal(method="post",action="/project/#{project.title}/deploy")
+   form.form-horizontal(method="post",action="/project/#{project.title}/environment/deploy")
 
       .form-group
          label.col-sm-2.control-label(for="version") version
          .col-sm-4
             select.form-control(multiple,name="version")#version
-               option(selected) v10.0.0 snapshot
-               option(disabled) ----
-               option v9.0.1 snapshot
-               option v9.1.0 snapshot
-               option(disabled) ----
-               option v9.0.0
-               option v8.4.2
-               option v8.4.1
-               option v8.4.0
-               option v8.3.0
+               if versions.masterSnapshot
+                  option(disabled) ---- master version
+                  option(selected)= versions.masterSnapshot
+               option(disabled) ---- snapshots
+               each version in versions.snapshots
+                  option= version
+               option(disabled) ---- releases
+               each version in versions.releases
+                  option= version
 
       .form-group
          label.col-sm-2.control-label(for="environment") environment
          .col-sm-4
             select.form-control(multiple,name="environment")#environment
-               option(selected) integration
+               option(selected)= environments.funnelStart
                option(disabled) ----
-               option dev-01
-               option dev-02
-               option dev-03
-               option(disabled) ----
-               option staging
-               option demo-01
-               option demo-02
-               option demo-03
-               option pre-prod
-               option production
-               option prod-test
+               each env in environments.funnel
+                  if env != environments.funnelStart
+                     option= env.environment
 
       .form-group
          .col-sm-8

@@ -7,7 +7,7 @@ block content
 
    .well
       table.table.table-striped
-        each environment in environments
+        each environment in environments.funnel
            tr
-               td.pull-right #{environment.name}
+               td.pull-right #{environment.environment}
                td #{environment.version}

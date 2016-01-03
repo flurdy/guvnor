@@ -35,10 +35,21 @@ block content
          label.col-sm-2.control-label(for="branch") branch or tag
          .col-sm-4
             select.form-control(multiple,name="branch")
-               option(selected) master
-               option(disabled) ----
-               option v9.0.1
-               option feature-fantastic
+               if branches.masterBranch
+               option(disabled) ---- master branch
+                  option(selected)= branches.masterBranch
+                  option(disabled) ----
+               option(disabled) ---- branches
+               each branch in branches.branches
+                  if branches.masterBranch
+                     if branches.masterBranch != branch
+                        option= branch
+                  else
+                     option= branch
+               option(disabled) ---- tags
+               each version in versions.releases
+                  option= version
+
 
       .form-group
          label.col-sm-2.control-label(for="environment") environment
@@ -46,19 +57,11 @@ block content
             select.form-control(multiple,name="environment")#environment
                option(selected) build
                option(disabled) ----
-               option integration
+               option= environments.funnelStart
                option(disabled) ----
-               option dev-01
-               option dev-02
-               option dev-03
-               option(disabled) ----
-               option staging
-               option demo-01
-               option demo-02
-               option demo-03
-               option pre-prod
-               option production
-               option prod-test
+               each env in environments.funnel
+                  if env.environment != environments.funnelStart
+                     option= env.environment
 
       .form-group
          .col-sm-8

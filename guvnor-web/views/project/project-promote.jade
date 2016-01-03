@@ -5,20 +5,20 @@ block content
 
    h4 promote project #{project.title}
 
-   form.form-horizontal(method="post",action="/project/#{project.title}/promote")
+   form.form-horizontal(method="post",action="/project/#{project.title}/environment/promote")
 
       .form-group
          label.col-sm-2.control-label(for="environment") environment
          .col-sm-4
             select.form-control(multiple,name="environment",size="9",required)#environment
-               option(value="integration") integration : v9.0.1
-               option(disabled) ----> staging : v.9.0.0
-               option(disabled) ----> demo-01 : v.9.0.0
-               option(value="staging") staging : v.9.0.0
-               option(disabled) ----> pre-prod : v.8.6.3
-               option(value="pre-prod") pre-prod  : v.8.6.3
-               option(disabled) ----> production : v.8.6.1
-               option(disabled) ----> prod-test : v.8.6.1
+               each env in environments.funnel
+                  if env.type != "development"
+                     option(value="#{env.environment}") #{env.environment} : #{env.version}
+                     if env.funnel
+                        each funnel in env.funnel
+                           each funnelenv in environments.funnel
+                              if funnelenv.environment == funnel
+                                 option(disabled) ----> #{funnel} : #{funnelenv.version}
 
       .form-group
          .col-sm-8

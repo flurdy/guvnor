@@ -11,10 +11,15 @@ block content
          label.col-sm-2.control-label(for="version") branch
          .col-sm-4
             select.form-control(multiple,name="branch")
-               option(selected) master
-               option(disabled) ----
-               option v9.0.x
-               option feature-fantastic
+               if masterBranch
+                  option(selected)= masterBranch
+                  option(disabled) ----
+               each branch in branches
+                  if masterBranch
+                     if masterBranch != branch
+                        option= branch
+                  else
+                     option= branch
 
       .form-group
          .col-sm-8

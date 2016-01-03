@@ -10,26 +10,21 @@ block content
    ul
       li
          a(href="/project/#{project.title}/build") build
-      // (master/branch)
 
       li
          a(href="/project/#{project.title}/test") test
-      // (unit,integration,functional,smoke,performance)
 
       li
-         a(href="/project/#{project.title}/deploy") deploy
-      // to development or integration
+         a(href="/project/#{project.title}/environment/deploy") deploy
 
       li
          a(href="/project/#{project.title}/tag") tag
 
       li
-         a(href="/project/#{project.title}/promote") promote
-      // integration to staging to prod test to prod
+         a(href="/project/#{project.title}/environment/promote") promote
 
       li
-         a(href="/project/#{project.title}/versions") find versions
+         a(href="/project/#{project.title}/environment/restart") restart
 
-
-
-
+      li
+         a(href="/project/#{project.title}/environment/versions") find versions

@@ -1,0 +1,23 @@
+extend ../layout
+block content
+
+   #breadcrumb project/#{project.title}/restart
+
+   h4 restart project #{project.title} environment
+
+   form.form-horizontal(method="post",action="/project/#{project.title}/environment/restart")
+
+      .form-group
+         label.col-sm-2.control-label(for="environment") environment
+         .col-sm-4
+            select.form-control(multiple,name="environment",size="9",required)#environment
+               each env in environments.funnel
+                  if env.type == "development"
+                     option= env.environment
+               each env in environments.funnel
+                  if env.type != "development"
+                     option= env.environment
+
+      .form-group
+         .col-sm-8
+            button.btn.btn-success.col-sm-4.pull-right(type="submit") restart
